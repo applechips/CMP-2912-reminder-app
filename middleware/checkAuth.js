@@ -1,16 +1,17 @@
 module.exports = {
   ensureAuthenticated: function (req, res, next) {
-    console.log('-ensureauth')
+    console.log('--ensure', req.isAuthenticated())
     if (req.isAuthenticated()) {
       return next();
     }
     res.redirect("/auth/login");
   },
   forwardAuthenticated: function (req, res, next) {
-    console.log('-forwardauth')
+    console.log('-forwardauth', req.isAuthenticated())
     if (!req.isAuthenticated()) {
       return next();
     }
-    res.redirect("/dashboard");
+
+    res.redirect("/reminders");
   },
 };
