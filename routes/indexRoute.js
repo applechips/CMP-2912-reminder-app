@@ -13,7 +13,7 @@ router.get("/reminder/new",  ensureAuthenticated, remindersController.new);
 
 router.get("/reminder/:id",  ensureAuthenticated, remindersController.listOne);
 
-// router.get("/reminder/:id/edit", ensureAuthenticated,reminderController.edit);
+router.get("/reminder/:id/edit", ensureAuthenticated, remindersController.edit);
 
 router.post("/reminder/", ensureAuthenticated,remindersController.create);
 
