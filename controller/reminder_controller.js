@@ -18,15 +18,9 @@ let remindersController = {
 
     // get your own reminders
 		const userIndex = database.findIndex((data) => data.username === req.user.username);
-		console.log('userind', userIndex);
-		res.render('reminder/index', { reminders: database[userIndex].reminders, friendsReminders: friendsReminders });
-		// try {
-		//   const usersFromDatabase = await getUsersFromDatabase();
-		//   const remindersFromDatabase = await getRemindersFromDatabase(usersFromDatabase);
-		//   res.render("reminder/index", { reminders: remindersFromDatabase })
-		// } catch (error) {
-		//   console.log(error);
-		// }
+
+		res.render('reminder/index', { name:database[userIndex].name, reminders: database[userIndex].reminders, friendsReminders: friendsReminders });
+
 	},
 
 	new: (req, res) => {

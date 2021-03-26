@@ -1,5 +1,23 @@
 <div class="container">
-  <h1 class="page-header">Reminders</h1>
+  <header class="date-header">
+    <div class="date">
+      <div id="day-field">
+        <div id="day"><%= new Date().getDay() %></div>
+        <div id="month"><span id="month_name"><%= new Date().toLocaleString('default', { month: 'short' }).toUpperCase() %></span>
+          <span id="year"><%= new Date().getFullYear() %></span>
+        </div>
+      </div>
+      <div id="week">
+        <%= new Date().toLocaleDateString('default', { weekday: 'long' }) %>
+      </div>
+    </div>
+
+    <div class="header-name">
+      <%= name %>
+    </div>
+	</header>
+
+  <h1 class="page-header">reminders</h1>
 <!-- today's date -->
 <!-- group your reminders, friends reminders -->
 <ul class="list-group">
