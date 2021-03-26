@@ -13,6 +13,24 @@
           <% } %>
         </h4>
 
+        <% reminderItem.tags.forEach(function (tag) { %>
+          <span class="badge badge-primary"><%= tag %></span>
+        <% }) %>
+
+          <% reminderItem.tasks.forEach(function (item) { %>
+            <div class="form-check">
+              <form action=<%= "/reminder/update/" + reminderItem.id %> method="POST">
+                <input name="<%= item.task %>.completed" class="form-check-input" 
+                value="<%= item.completed %>" type="radio" <%= item.completed ? "checked" : "" %> id="flexCheckDefault" onchange="this.form.submit()">
+                <label class="form-check-label" for="flexCheckDefault">
+                  <%= item.task %>
+                </label>
+              </form>
+  
+            </div>
+          <% }) %>
+
+
         <a class="btn btn-warning" href=<%= "/reminder/" + reminderItem.id + "/edit" %>>Edit</a>
 
         <form class="deleteForm "method="POST" action=<%= "/reminder/delete/" + reminderItem.id %>>

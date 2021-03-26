@@ -1,0 +1,35 @@
+<div class="container friends-list-container">
+  <h1 class="page-header">Friends</h1>
+
+  <ul class="list-group">
+    <% users.forEach(function(user){ %>
+      <li class="list-group-item">
+        <img src="<%= user.image %>"
+             class="friend-profile-image img-thumbnail" /> <span class="friend-name">
+          <%= user.name %>
+        </span>
+ 
+        <% if(user.friends) { %>
+          <span class="badge badge-success">friends</span>
+          <form action=<%= "/friend/delete/" + user.id %> method="POST">
+          <button type="submit" class="friend-btn btn btn-danger">remove friend</button>
+          <div style="display: none">
+            <input type="text" class="form-control" id="id" name="id" value="<%=user.id%>" style="display: none">
+            <input type="text" class="form-control" id="name" name="name" value="<%=user.name%>" style="display: none">
+            <input type="text" class="form-control" id="image" name="image" value="<%=user.image%>" style="display: none">
+          </div>
+          </form>
+        <% } else { %>
+          <form action="/friend" method="POST">
+            <button type="submit" class="friend-btn btn btn-primary">add friend</button>
+            <div style="display: none">
+              <input type="text" class="form-control" id="id" name="id" value="<%=user.id%>" style="display: none">
+              <input type="text" class="form-control" id="name" name="name" value="<%=user.name%>" style="display: none">
+              <input type="text" class="form-control" id="image" name="image" value="<%=user.image%>" style="display: none">
+            </div>
+          </form>
+        <% } %>
+      </li>
+      <% }) %>
+  </ul>
+</div>

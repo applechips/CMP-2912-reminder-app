@@ -1,3 +1,27 @@
+<script type="text/javascript">
+  let taskFieldCount = 3;
+  function addTaskInputField() {
+    const name = "task" + ++taskFieldCount
+    const placeholder = "Task " + taskFieldCount;
+    const tasks = document.querySelector('.js-tasks');
+    const node = document.createElement("div");
+  node.innerHTML = `<input type="text" placeholder="`+placeholder+`" class="form-control" id="titleInput" name="` + name + `"/>`;
+
+  tasks.append(node);
+  }
+
+  let tagFieldCount = 1;
+  function addTagInputField() {
+    const name = "tag" + ++taskFieldCount
+    const placeholder = "Tag " + taskFieldCount;
+    const tasks = document.querySelector('.js-tags');
+    const node = document.createElement("div");
+  node.innerHTML = `<input type="text" placeholder="`+placeholder+`" class="form-control" id="titleInput" name="` + name + `"/>`;
+
+  tasks.append(node);
+  }
+</script>
+
 <div class="container">
   <form action="/reminder" method="POST">
     <div class="form-group">
@@ -8,6 +32,22 @@
       <label for="description">Description</label>
       <textarea class="form-control" id="descriptionInput" rows="3" placeholder="Description" name="description"></textarea>
     </div>
+    <div class="form-group js-tasks">
+      <label for="title">Tasks</label>
+      <input type="text" class="form-control" id="titleInput" placeholder="Task 1" name="task1">
+      <input type="text" class="form-control" id="titleInput" placeholder="Task 2" name="task2">
+      <input type="text" class="form-control" id="titleInput" placeholder="Task 3" name="task3">
+    </div>
+    <button type="button" onclick="addTaskInputField()" >add more tasks</button>
+
+    <div class="form-group js-tags">
+      <label for="title">Tags</label>
+      <input type="text" class="form-control" id="titleInput" placeholder="Tag 1" name="tag1">
+    </div>
+    <button type="button" onclick="addTagInputField()" >add more tags</button>
+
+
+
     <button type="submit" class="btn btn-default">Submit</button>
   </form>
 </div>
