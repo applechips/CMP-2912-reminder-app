@@ -23,17 +23,29 @@ const getFriendsList = (req) => {
 
     return users;
 }
+
 let friendsController = {
 	list: async (req, res) => {
-		console.log('--friendsController.LIST', req.user.username);
-
     const users = getFriendsList(req)
 
-		res.render('friends/index', { users: users });
+		res.render('friends/index', { users: users, search: ''});
 	},
 
+  search: async (req, res) => {
+    console.log('---SEARCH', req.body.search)
+    const users = getFriendsList(req);
+    let searchUsers = [];
+    users.forEach((friend) => {
+      if(friend.name.toLowerCase().includes(req.body.search.toLowerCase())) {
+        searchUsers.push(friend);
+      }
+    });
+
+		res.render('friends/index', { users: searchUsers, search: req.body.search });
+
+  },
+
 	add: (req, res) => {
-		console.log('--friendsController.ADD', req.body);
 		const userIndex = database.findIndex((data) => data.username === req.user.username);
     const newFriend = {
       id: Number.parseInt(req.body.id),

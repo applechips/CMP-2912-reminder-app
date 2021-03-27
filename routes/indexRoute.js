@@ -5,6 +5,7 @@ const router = express.Router();
 const { ensureAuthenticated } = require('../middleware/checkAuth');
 
 router.get('/friends', ensureAuthenticated, friendsController.list);
+router.post('/friends/search', ensureAuthenticated, friendsController.search);
 router.post('/friend/', ensureAuthenticated, friendsController.add);
 router.post('/friend/delete/:id', ensureAuthenticated, friendsController.delete);
 

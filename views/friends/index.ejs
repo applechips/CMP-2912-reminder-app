@@ -1,7 +1,13 @@
 <div class="container friends-list-container">
   <h1 class="page-header">Friends</h1>
+  <form action="/friends/search" method="POST">
+  <div class="input-group">
+    <input type="search" name="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+      aria-describedby="search-addon" value="<%= search %>"/>
+    <button type="submit" class="btn btn-outline-primary">search</button>
+  </div>
+  </form>
 
-  <ul class="list-group">
     <% users.forEach(function(user){ %>
       <li class="list-group-item">
         <img src="<%= user.image %>"
@@ -11,7 +17,7 @@
  
         <% if(user.friends) { %>
           <span class="badge badge-success">friends</span>
-          <form action=<%= "/friend/delete/" + user.id %> method="POST">
+          <form class="friend-form" action=<%= "/friend/delete/" + user.id %> method="POST">
           <button type="submit" class="friend-btn btn btn-danger">remove friend</button>
           <div style="display: none">
             <input type="text" class="form-control" id="id" name="id" value="<%=user.id%>" style="display: none">
@@ -20,7 +26,7 @@
           </div>
           </form>
         <% } else { %>
-          <form action="/friend" method="POST">
+          <form class="friend-form" action="/friend" method="POST">
             <button type="submit" class="friend-btn btn btn-primary">add friend</button>
             <div style="display: none">
               <input type="text" class="form-control" id="id" name="id" value="<%=user.id%>" style="display: none">
