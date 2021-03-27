@@ -2,7 +2,7 @@
   <header class="date-header">
     <div class="date">
       <div id="day-field">
-        <div id="day"><%= new Date().getDay() %></div>
+        <div id="day"><%= new Date().getDate() %></div>
         <div id="month"><span id="month_name"><%= new Date().toLocaleString('default', { month: 'short' }).toUpperCase() %></span>
           <span id="year"><%= new Date().getFullYear() %></span>
         </div>
@@ -17,6 +17,24 @@
     </div>
 	</header>
 
+  <div>
+    <div class="weather-container">
+      <div class="cities">
+        <div class="city">
+          <h4 class="city-name" data-name="Vancouver,CA">
+            <span>Vancouver</span>
+            <sup>BC</sup>
+          </h4>
+          <div class="city-temp"><%= weather.temp %><sup>°C</sup></div>
+          <figure>
+            <img class="city-icon" src="<%= weather.imageUrl %>">
+            <figcaption><%= weather.description %></figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+  </div>
   <h1 class="page-header">Your Reminders:</h1>
 
 <!-- group your reminders, friends reminders -->

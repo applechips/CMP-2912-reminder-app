@@ -1,5 +1,8 @@
 let database = require('../database').Database;
 let userModel = require('../database').userModel;
+const fetch = require('node-fetch');
+const dotenv = require('dotenv');
+dotenv.config();
 
 function formatAMPM(date) {
   var hours = date.getHours();
@@ -37,15 +40,37 @@ let remindersController = {
 		// get your own reminders
 		const userIndex = database.findIndex((data) => data.username === req.user.username);
 
-		res.render('reminder/index', {
-			name: database[userIndex].name,
-			reminders: database[userIndex].reminders,
-			friendsReminders: friendsReminders
-		});
+		// fetch current weather in vancouver
+		let weather = {
+			type: '',
+			description: '',
+			temp: '',
+			imageUrl: ''
+		};
+
+		fetch('https://api.openweathermap.org/data/2.5/onecall?lat=49.2827&lon=-123.1207&exclude=minutely,hourly,daily,alerts&units=metric&appid=' + process.env.OPEN_WEATHER_API_KEY)
+		.then(res => res.json())
+		.then (json => {
+			console.log(json.current);
+			const response = json.current.weather[0];
+			console.log(json.current.temp)
+			weather.type = response.main;
+			weather.description = response.description;
+			weather.temp = Math.round(json.current.temp);
+			weather.imageUrl = 'http://openweathermap.org/img/wn/' + response.icon + '@2x.png';
+			console.log(weather);
+		})
+		.then(() => {
+			res.render('reminder/index', {
+				name: database[userIndex].name,
+				reminders: database[userIndex].reminders,
+				friendsReminders: friendsReminders,
+				weather
+			});
+		})
 	},
 
 	new: (req, res) => {
-		console.log('--new req', req.user);
 		res.render('reminder/create');
 	},
 
