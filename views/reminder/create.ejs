@@ -12,8 +12,8 @@
 
   let tagFieldCount = 1;
   function addTagInputField() {
-    const name = "tag" + ++taskFieldCount
-    const placeholder = "Tag " + taskFieldCount;
+    const name = "tag" + ++tagFieldCount
+    const placeholder = "Tag " + tagFieldCount;
     const tasks = document.querySelector('.js-tags');
     const node = document.createElement("div");
   node.innerHTML = `<input type="text" placeholder="`+placeholder+`" class="form-control" id="titleInput" name="` + name + `"/>`;
@@ -23,6 +23,7 @@
 </script>
 
 <div class="container">
+  <h1>Create a New Reminder</h1>
   <form action="/reminder" method="POST">
     <div class="form-group">
       <label for="title">Title</label>
@@ -32,6 +33,14 @@
       <label for="description">Description</label>
       <textarea class="form-control" id="descriptionInput" rows="3" placeholder="Description" name="description"></textarea>
     </div>
+    
+    <div class="form-group row">
+      <label for="example-datetime-local-input" class="col-2 col-form-label">Reminder Date</label>
+      <div class="col-10">
+        <input class="form-control" type="datetime-local" name="date"  id="example-datetime-local-input">
+      </div>
+    </div>
+
     <div class="form-group js-tasks">
       <label for="title">Tasks</label>
       <input type="text" class="form-control" id="titleInput" placeholder="Task 1" name="task1">
@@ -48,6 +57,7 @@
 
 
 
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button style="display: block;
+    margin-top: 25px;" type="submit" class="btn btn-success">Submit</button>
   </form>
 </div>

@@ -38,22 +38,3 @@ app.listen(3001, function () {
     "Server running. Visit: localhost:3001/reminders in your browser 🚀"
   );
 });
-
-
-// app.get("/reminders", isAuthenticated, reminderController.list);
-
-// app.get("/reminder/new", reminderController.new);
-
-// app.get("/reminder/:id", reminderController.listOne);
-
-// app.get("/reminder/:id/edit", reminderController.edit);
-
-// app.post("/reminder/", reminderController.create);
-
-// // Implement this yourself
-// app.post("/reminder/update/:id", reminderController.update);
-
-// // Implement this yourself
-// app.post("/reminder/delete/:id", reminderController.delete);
-
-

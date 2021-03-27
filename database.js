@@ -11,17 +11,25 @@ let Database = [
 				id: 1,
 				title: 'Monday',
 				description: 'tasks for monday',
+				date: '2021-03-31T20:00',
 				completed: false,
-				tasks: [ { task: 'walk the dogs', completed: false }, { task: 'go to school', completed: false } ],
+				tasks: [
+					{ id: 1, task: 'walk the dogs', completed: false },
+					{ id: 2, task: 'go to school', completed: false }
+				],
 				tags: [ 'dogs', 'school' ]
 			},
 			{
 				id: 2,
 				title: 'Tuesday',
 				description: 'tasks for tuesday',
+				date: '2021-04-02T10:30',
 				completed: false,
-				tasks: [ 'feed the dogs', 'finish chores' ],
-				tags: [ 'dogs', 'family' ]
+				tasks: [
+					{ id: 1, task: 'message prof', completed: false },
+					{ id: 2, task: 'finish homework', completed: false }
+				],
+				tags: [ 'school' ]
 			}
 		],
 		friends: [
@@ -41,16 +49,24 @@ let Database = [
 				id: 1,
 				title: 'Wonton',
 				description: 'tasks for wonton',
+				date: '2021-04-03T07:30',
 				completed: false,
-				tasks: [ 'walk the dogs', 'go to school' ],
+				tasks: [
+					{ id: 1, task: 'walk the dogs', completed: false },
+					{ id: 2, task: 'go to school', completed: false }
+				],
 				tags: [ 'dogs', 'school' ]
 			},
 			{
 				id: 2,
 				title: 'Morty',
 				description: 'tasks for morty',
+				date: '2021-04-05T011:30',
 				completed: false,
-				tasks: [ 'feed the dogs', 'finish chores' ],
+				tasks: [
+					{ id: 1, task: 'wonton task', completed: false },
+					{ id: 2, task: 'go to school', completed: false }
+				],
 				tags: [ 'dogs', 'family' ]
 			}
 		]
@@ -67,8 +83,12 @@ let Database = [
 				id: 1,
 				title: 'Topy',
 				description: 'tasks for topy',
+				date: '2021-04-01T014:00',
 				completed: false,
-				tasks: [ 'walk the dogs', 'go to school' ],
+				tasks: [
+					{ id: 1, task: 'walk the dogs', completed: false },
+					{ id: 2, task: 'go to school', completed: false }
+				],
 				tags: [ 'dogs', 'school' ]
 			}
 		]
@@ -85,8 +105,12 @@ let Database = [
 				id: 1,
 				title: 'Baesee',
 				description: 'tasks for Baesee',
+				date: '2021-04-07T016:00',
 				completed: false,
-				tasks: [ 'walk the dogs', 'go to school' ],
+				tasks: [
+					{ id: 1, task: 'walk the dogs', completed: false },
+					{ id: 2, task: 'go to school', completed: false }
+				],
 				tags: [ 'dogs', 'school' ]
 			}
 		]

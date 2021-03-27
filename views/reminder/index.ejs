@@ -17,8 +17,8 @@
     </div>
 	</header>
 
-  <h1 class="page-header">reminders</h1>
-<!-- today's date -->
+  <h1 class="page-header">Your Reminders:</h1>
+
 <!-- group your reminders, friends reminders -->
 <ul class="list-group">
   <% reminders.forEach(function (reminderItem) { %>
@@ -32,12 +32,14 @@
         <span class="badge badge-danger">False</span>
       <% } %>
       <a class="pull-right" href=<%= "/reminder/" + reminderItem.id %>>View</a>
-      <a href='#' class='close' aria-hidden='true'>&times;</a>
     </li>
   <% }) %>
+</ul>
 
+<ul class="list-group" style="padding-top: 25px;">
+  <h2>Your Friends Reminders:</h2>
   <% friendsReminders.forEach(function (friend) { %>
-    <h2><%= friend.name %></h2>
+    <h4  style="padding-top: 10px;"><%= friend.name %></h4>
     <% friend.reminders.forEach(function (reminder) { %>
     <li class="list-group-item">
       <strong><%= reminder.title %>: </strong>
@@ -49,7 +51,6 @@
         <span class="badge badge-danger">False</span>
       <% } %>
       <a class="pull-right" href=<%= "/reminder/" + reminder.id %>>View</a>
-      <a href='#' class='close' aria-hidden='true'>&times;</a>
     </li>
     <% }) %>
   <% }) %>

@@ -1,3 +1,15 @@
+.edit-single-task {
+  display: flex;
+}
+
+.edit-single-task .task-input {
+  width: 70%;
+}
+
+.edit-single-task .completed-input {
+  padding-left: 30px;
+}
+
 .header-name {
   display: inline-block;
   float: right;
@@ -38,9 +50,14 @@
 #week{
 	font-weight: bold;
   padding-left: 5px;
-  position: absolute;
-  top: 102px;
+  /* position: absolute;
+  top: 102px; */
   font-size: 18px;
+}
+
+.friend-form {
+  position: relative;
+  top: -60px;
 }
 
 .friend-profile-image {

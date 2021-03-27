@@ -7,9 +7,9 @@
         <h4><%= reminderItem.description %></h4>
         <h4>Completed:
           <% if (reminderItem.completed == true) { %>
-            <span class="label label-success">True</span>
+            <span class="badge badge-success">True</span>
           <% } else if (reminderItem.completed == false) { %>
-            <span class="label label-danger">False</span>
+            <span class="badge badge-danger">False</span>
           <% } %>
         </h4>
 
@@ -17,11 +17,12 @@
           <span class="badge badge-primary"><%= tag %></span>
         <% }) %>
 
-          <% reminderItem.tasks.forEach(function (item) { %>
+          <% reminderItem.tasks.forEach(function (item, index) { %>
             <div class="form-check">
               <form action=<%= "/reminder/update/" + reminderItem.id %> method="POST">
+                <input style="display: none" value="<%= item.id %>" name="taskChange" />
                 <input name="<%= item.task %>.completed" class="form-check-input" 
-                value="<%= item.completed %>" type="radio" <%= item.completed ? "checked" : "" %> id="flexCheckDefault" onchange="this.form.submit()">
+                value="<%= item.completed %>" type="checkbox" <%= item.completed ? "checked" : "" %> id="flexCheckDefault" onchange="this.form.submit()">
                 <label class="form-check-label" for="flexCheckDefault">
                   <%= item.task %>
                 </label>
