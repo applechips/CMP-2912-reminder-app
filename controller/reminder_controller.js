@@ -17,7 +17,6 @@ function formatAMPM(date) {
 
 function formatDate(date) {
 	const newDate = new Date(date).toString().split(" ");
-	console.log(newDate)
 	const formattedDate = newDate[0] + " " + newDate[1] +  " " + newDate[2] +  " " + newDate[3]
 	return formattedDate;
 }

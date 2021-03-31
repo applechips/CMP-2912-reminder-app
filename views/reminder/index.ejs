@@ -36,7 +36,7 @@
 
   </div>
   <h1 class="page-header">Your Reminders:</h1>
-
+  <!-- your reminders  -->
   <ul class="list-group reminder-list"  style="list-style-type:none;">
     <% reminders.forEach(function (reminderItem) { %>
       <li class="list-group-item">
@@ -44,6 +44,7 @@
         <label for="reminderItem">
           <strong><%= reminderItem.title %>: </strong><%= reminderItem.description %>
         </label>
+        <span class="reminder-date">Due: <strong><%= reminderItem.formattedDate %> @ <%=reminderItem.formattedTime %></strong></span>
         <ul style="list-style-type:none;">
           <% reminderItem.tasks.forEach(function (task) { %>
             <li>
@@ -60,39 +61,31 @@
     <% }) %>
   </ul>
 
-<!-- group your reminders, friends reminders -->
-<ul class="list-group">
-  <% reminders.forEach(function (reminderItem) { %>
-    <li class="list-group-item">
-      <strong><%= reminderItem.title %>: </strong>
-      <%= reminderItem.description %>
-      || Completed:
-      <% if (reminderItem.completed == true) { %>
-        <span class="badge badge-success">True</span>
-      <% } else if (reminderItem.completed == false) { %>
-        <span class="badge badge-danger">False</span>
-      <% } %>
-      <a class="pull-right" href=<%= "/reminder/" + reminderItem.id %>>View</a>
-    </li>
-  <% }) %>
-</ul>
-
-<ul class="list-group" style="padding-top: 25px;">
+<!-- friends reminders -->
+<ul class="list-group  reminder-list" style="padding-top: 25px;">
   <h2>Your Friends Reminders:</h2>
   <% friendsReminders.forEach(function (friend) { %>
     <h4  style="padding-top: 10px;"><%= friend.name %></h4>
     <% friend.reminders.forEach(function (reminder) { %>
-    <li class="list-group-item">
-      <strong><%= reminder.title %>: </strong>
-      <%= reminder.description %>
-      || Completed:
-      <% if (reminder.completed == true) { %>
-        <span class="badge badge-success">True</span>
-      <% } else if (reminder.completed == false) { %>
-        <span class="badge badge-danger">False</span>
-      <% } %>
-      <a class="pull-right" href=<%= "/reminder/" + reminder.id %>>View</a>
-    </li>
+      <li class="list-group-item">
+        <input id="reminderItem" type="checkbox" <%= reminder.completed ? "checked" : "" %>/>
+        <label for="reminderItem">
+          <strong><%= reminder.title %>: </strong><%= reminder.description %>
+        </label>
+        <span class="reminder-date">Due: <strong><%= reminder.formattedDate %> @ <%=reminder.formattedTime %></strong></span>
+        <ul style="list-style-type:none;">
+          <% reminder.tasks.forEach(function (task) { %>
+            <li>
+              <input id="taskItem" type="checkbox" <%= task.completed ? "checked" : "" %>/>
+              <label for="taskItem">
+               <span class="<%= task.completed ? 'completed' : '' %>"><%= task.task %></span>
+              </label>
+            </li>
+          <% }) %>
+        </ul>
+
+        <a class="pull-right" href=<%= "/reminder/" + reminder.id %>>View</a>
+      </li>
     <% }) %>
   <% }) %>
 </ul>

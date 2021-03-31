@@ -5,6 +5,7 @@
       <li class="list-group-item">
         <h3><strong><%= reminderItem.title %>: </strong></h3>
         <h4><%= reminderItem.description %></h4>
+        <span class="reminder-date">Due: <strong><%= reminderItem.formattedDate %> @ <%=reminderItem.formattedTime %></strong></span>
         <h4>Completed:
           <% if (reminderItem.completed == true) { %>
             <span class="badge badge-success">True</span>

@@ -3,6 +3,10 @@
   color: #888;
 }
 
+.reminder-list .reminder-date {
+	float: right;
+}
+
 .weather-container {
 	width: 100%;
 	max-width: 1200px;

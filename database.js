@@ -12,6 +12,8 @@ let Database = [
 				title: 'Monday',
 				description: 'tasks for monday',
 				date: '2021-03-31T20:00',
+				formattedDate: 'Wed Mar 31 2021',
+				formattedTime: '8:00 pm',
 				completed: false,
 				tasks: [
 					{ id: 1, task: 'walk the dogs', completed: true },
@@ -24,6 +26,8 @@ let Database = [
 				title: 'Tuesday',
 				description: 'tasks for tuesday',
 				date: '2021-04-02T10:30',
+				formattedDate: 'Fri Apr 02 2021',
+				formattedTime: '10:30 am',
 				completed: false,
 				tasks: [
 					{ id: 1, task: 'message prof', completed: false },
@@ -50,6 +54,8 @@ let Database = [
 				title: 'Wonton',
 				description: 'tasks for wonton',
 				date: '2021-04-03T07:30',
+				formattedDate: 'Sat Apr 03 2021',
+				formattedTime: '7:30am',
 				completed: false,
 				tasks: [
 					{ id: 1, task: 'walk the dogs', completed: false },
@@ -61,7 +67,9 @@ let Database = [
 				id: 2,
 				title: 'Morty',
 				description: 'tasks for morty',
-				date: '2021-04-05T011:30',
+				date: '2021-04-05T11:30',
+				formattedDate: 'Mon Apr 05 2021',
+				formattedTime: '11:30 am',
 				completed: false,
 				tasks: [
 					{ id: 1, task: 'wonton task', completed: false },
@@ -83,7 +91,9 @@ let Database = [
 				id: 1,
 				title: 'Topy',
 				description: 'tasks for topy',
-				date: '2021-04-01T014:00',
+				date: '2021-04-01T14:00',
+				formattedDate: 'Thu Apr 01 2021',
+				formattedTime: '2:00 pm',
 				completed: false,
 				tasks: [
 					{ id: 1, task: 'walk the dogs', completed: true },
@@ -106,6 +116,8 @@ let Database = [
 				title: 'Baesee',
 				description: 'tasks for Baesee',
 				date: '2021-04-07T016:00',
+				formattedDate: 'Thu Apr 01 2021',
+				formattedTime: '5:00 pm',
 				completed: false,
 				tasks: [
 					{ id: 1, task: 'walk the dogs', completed: false },
