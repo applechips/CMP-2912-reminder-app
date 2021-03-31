@@ -40,22 +40,32 @@
   <ul class="list-group reminder-list"  style="list-style-type:none;">
     <% reminders.forEach(function (reminderItem) { %>
       <li class="list-group-item">
-        <input id="reminderItem" type="checkbox" <%= reminderItem.completed ? "checked" : "" %>/>
+        <form action=<%= "/reminder/update/" + reminderItem.id %> method="POST">
+        <input style="display: none" value="<%= reminderItem.id %>" name="reminderChangeMain" />
+        <input id="reminderItem" type="checkbox" <%= reminderItem.completed ? "checked" : "" %> onchange="this.form.submit()"/>
         <label for="reminderItem">
-          <strong><%= reminderItem.title %>: </strong><%= reminderItem.description %>
+          <span class="<%= reminderItem.completed ? 'completed' : '' %>"">
+            <strong><%= reminderItem.title %>: </strong><%= reminderItem.description %>
+          </span>
         </label>
         <span class="reminder-date">Due: <strong><%= reminderItem.formattedDate %> @ <%=reminderItem.formattedTime %></strong></span>
+      </form>
         <ul style="list-style-type:none;">
           <% reminderItem.tasks.forEach(function (task) { %>
             <li>
-              <input id="taskItem" type="checkbox" <%= task.completed ? "checked" : "" %>/>
+              <form action=<%= "/reminder/update/" + reminderItem.id %> method="POST">
+              <input style="display: none" value="<%= task.id %>" name="taskChangeMain" />
+              <input id="taskItem" type="checkbox" <%= task.completed ? "checked" : "" %> onchange="this.form.submit()" />
               <label for="taskItem">
                <span class="<%= task.completed ? 'completed' : '' %>"><%= task.task %></span>
               </label>
+            </form>
             </li>
           <% }) %>
         </ul>
-
+        <% reminderItem.tags.forEach(function (tag) { %>
+          <span class="badge badge-primary"><%= tag %></span>
+        <% }) %>
         <a class="pull-right" href=<%= "/reminder/" + reminderItem.id %>>View</a>
       </li>
     <% }) %>
@@ -68,7 +78,7 @@
     <h4  style="padding-top: 10px;"><%= friend.name %></h4>
     <% friend.reminders.forEach(function (reminder) { %>
       <li class="list-group-item">
-        <input id="reminderItem" type="checkbox" <%= reminder.completed ? "checked" : "" %>/>
+        <input disabled id="reminderItem" type="checkbox" <%= reminder.completed ? "checked" : "" %>/>
         <label for="reminderItem">
           <strong><%= reminder.title %>: </strong><%= reminder.description %>
         </label>
@@ -76,17 +86,19 @@
         <ul style="list-style-type:none;">
           <% reminder.tasks.forEach(function (task) { %>
             <li>
-              <input id="taskItem" type="checkbox" <%= task.completed ? "checked" : "" %>/>
+              <input disabled id="taskItem" type="checkbox" <%= task.completed ? "checked" : "" %>/>
               <label for="taskItem">
                <span class="<%= task.completed ? 'completed' : '' %>"><%= task.task %></span>
               </label>
             </li>
           <% }) %>
         </ul>
-
-        <a class="pull-right" href=<%= "/reminder/" + reminder.id %>>View</a>
+        <% reminder.tags.forEach(function (tag) { %>
+          <span class="badge badge-primary"><%= tag %></span>
+        <% }) %>
       </li>
     <% }) %>
+
   <% }) %>
 </ul>
 

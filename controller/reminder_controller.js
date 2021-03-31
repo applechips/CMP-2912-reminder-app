@@ -141,12 +141,34 @@ let remindersController = {
 
 	update: (req, res) => {
 		console.log('---UPDATE REMINDER');
-		console.log('-body', req.body);
 		const userDb = userModel.findById(req.user.id);
 		let reminderToFind = Number.parseInt(req.params.id);
 		const reminderIndex = userDb.reminders.findIndex((data) => data.id === reminderToFind);
 
 		const remindersDb = userDb.reminders[reminderIndex];
+		if (req.body.reminderChangeMain) {
+			let currentReminder = userDb.reminders[reminderIndex];
+
+			userDb.reminders[reminderIndex].completed = !currentReminder.completed
+		
+			res.redirect('/reminders');
+		}
+
+		if (req.body.taskChangeMain) {
+			let taskIndex = userDb.reminders[reminderIndex].tasks.findIndex(
+				(task) => task.id === Number.parseInt(req.body.taskChangeMain)
+			);
+			let currentTask = userDb.reminders[reminderIndex].tasks[taskIndex];
+
+			userDb.reminders[reminderIndex].tasks[taskIndex] = {
+				id: currentTask.id,
+				task: currentTask.task,
+				completed: !currentTask.completed
+			};
+
+			res.redirect('/reminders');
+		}
+
 		if (req.body.taskChange) {
 			let taskIndex = userDb.reminders[reminderIndex].tasks.findIndex(
 				(task) => task.id === Number.parseInt(req.body.taskChange)
