@@ -18,13 +18,13 @@
         <% }) %>
 
           <% reminderItem.tasks.forEach(function (item, index) { %>
-            <div class="form-check">
+            <div class="form-check single-reminder-task-list">
               <form action=<%= "/reminder/update/" + reminderItem.id %> method="POST">
                 <input style="display: none" value="<%= item.id %>" name="taskChange" />
                 <input name="<%= item.task %>.completed" class="form-check-input" 
                 value="<%= item.completed %>" type="checkbox" <%= item.completed ? "checked" : "" %> id="flexCheckDefault" onchange="this.form.submit()">
                 <label class="form-check-label" for="flexCheckDefault">
-                  <%= item.task %>
+                  <span class="<%= item.completed ? 'completed' : '' %>"><%= item.task %></span>
                 </label>
               </form>
   
@@ -32,6 +32,7 @@
           <% }) %>
 
 
+        
         <a class="btn btn-warning" href=<%= "/reminder/" + reminderItem.id + "/edit" %>>Edit</a>
 
         <form class="deleteForm "method="POST" action=<%= "/reminder/delete/" + reminderItem.id %>>

@@ -37,6 +37,29 @@
   </div>
   <h1 class="page-header">Your Reminders:</h1>
 
+  <ul class="list-group reminder-list"  style="list-style-type:none;">
+    <% reminders.forEach(function (reminderItem) { %>
+      <li class="list-group-item">
+        <input id="reminderItem" type="checkbox" <%= reminderItem.completed ? "checked" : "" %>/>
+        <label for="reminderItem">
+          <strong><%= reminderItem.title %>: </strong><%= reminderItem.description %>
+        </label>
+        <ul style="list-style-type:none;">
+          <% reminderItem.tasks.forEach(function (task) { %>
+            <li>
+              <input id="taskItem" type="checkbox" <%= task.completed ? "checked" : "" %>/>
+              <label for="taskItem">
+               <span class="<%= task.completed ? 'completed' : '' %>"><%= task.task %></span>
+              </label>
+            </li>
+          <% }) %>
+        </ul>
+
+        <a class="pull-right" href=<%= "/reminder/" + reminderItem.id %>>View</a>
+      </li>
+    <% }) %>
+  </ul>
+
 <!-- group your reminders, friends reminders -->
 <ul class="list-group">
   <% reminders.forEach(function (reminderItem) { %>

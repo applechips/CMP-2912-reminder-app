@@ -14,7 +14,7 @@ let Database = [
 				date: '2021-03-31T20:00',
 				completed: false,
 				tasks: [
-					{ id: 1, task: 'walk the dogs', completed: false },
+					{ id: 1, task: 'walk the dogs', completed: true },
 					{ id: 2, task: 'go to school', completed: false }
 				],
 				tags: [ 'dogs', 'school' ]
@@ -53,7 +53,7 @@ let Database = [
 				completed: false,
 				tasks: [
 					{ id: 1, task: 'walk the dogs', completed: false },
-					{ id: 2, task: 'go to school', completed: false }
+					{ id: 2, task: 'go to school', completed: true }
 				],
 				tags: [ 'dogs', 'school' ]
 			},
@@ -86,7 +86,7 @@ let Database = [
 				date: '2021-04-01T014:00',
 				completed: false,
 				tasks: [
-					{ id: 1, task: 'walk the dogs', completed: false },
+					{ id: 1, task: 'walk the dogs', completed: true },
 					{ id: 2, task: 'go to school', completed: false }
 				],
 				tags: [ 'dogs', 'school' ]

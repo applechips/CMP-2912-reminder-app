@@ -18,8 +18,7 @@ const getFriendsList = (req) => {
       } else {
         user.friends = false
       }
- 
-    } )
+    })
 
     return users;
 }
@@ -42,7 +41,6 @@ let friendsController = {
     });
 
 		res.render('friends/index', { users: searchUsers, search: req.body.search });
-
   },
 
 	add: (req, res) => {
